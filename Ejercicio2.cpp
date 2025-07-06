@@ -12,6 +12,7 @@ Valor a buscar: 2
 #include <iostream>
 using namespace std;
 
+// Mostrar la matriz completa
 void mostrarMatriz(int matriz[][3], int fila, int columna) {
 	for (int i = 0; i < fila; i++) {
 		for (int j = 0; j < columna; j++) {
@@ -21,6 +22,7 @@ void mostrarMatriz(int matriz[][3], int fila, int columna) {
 	}
 }
 
+// Buscar el valor y mostrar todas sus posiciones
 void buscarValor(int valor, int matriz[][3], int fila, int columna) {
 	cout << "El valor " << valor << " se encuentra en:\n";
 	for (int i = 0; i < fila; i++) {
@@ -32,6 +34,18 @@ void buscarValor(int valor, int matriz[][3], int fila, int columna) {
 	}
 }
 
+// Verificar si el valor existe en la matriz
+bool verificarValor(int valor, int matriz[][3], int fila, int columna) {
+	for (int i = 0; i < fila; i++) {
+		for (int j = 0; j < columna; j++) {
+			if (matriz[i][j] == valor)
+				return true;
+		}
+	}
+	cout << "El valor no existe en la matriz.\n";
+	return false;
+}
+
 int main() {
 	int matriz[3][3] = {
 		{1, 2, 3},
@@ -40,13 +54,16 @@ int main() {
 	};
 
 	int valor;
+
 	cout << "Matriz:\n";
 	mostrarMatriz(matriz, 3, 3);
 
 	cout << "Valor que desea buscar: ";
 	cin >> valor;
 
-	buscarValor(valor, matriz, 3, 3);
+	if (verificarValor(valor, matriz, 3, 3)) {
+		buscarValor(valor, matriz, 3, 3);
+	}
 
 	return 0;
 }
