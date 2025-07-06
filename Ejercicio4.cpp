@@ -26,7 +26,21 @@ int main() {
         cout << endl;
     }
 
-    // Aún no se piden filas ni se intercambian
+    int fila_a, fila_b;
+    cout << "\nIngrese la fila a intercambiar (ej. 0 y 2):\n";
+    cout << "Fila a: ";
+    cin >> fila_a;
+    cout << "Fila b: ";
+    cin >> fila_b;
+
+    // Intercambiar las filas
+    for (int i = 0; i < 4; i++) {
+        int aux = matriz[fila_a][i];
+        matriz[fila_a][i] = matriz[fila_b][i];
+        matriz[fila_b][i] = aux;
+    }
+
+    // Aún no se muestra la matriz final
 
     return 0;
 }
