@@ -28,23 +28,53 @@ void imprimirBosque(int bosque[N][M]) {
     cout << endl;
 }
 
+void propagarFuego(int bosque[N][M]) {
+    int nuevoBosque[N][M];
+
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            if (bosque[i][j] == 0) {
+                if ((i > 0 && bosque[i-1][j] == 1) ||
+                    (i < N-1 && bosque[i+1][j] == 1) ||
+                    (j > 0 && bosque[i][j-1] == 1) ||
+                    (j < M-1 && bosque[i][j+1] == 1)) {
+                    nuevoBosque[i][j] = 1;
+                } else {
+                    nuevoBosque[i][j] = 0;
+                }
+            } else if (bosque[i][j] == 1) {
+                nuevoBosque[i][j] = 2;
+            } else {
+                nuevoBosque[i][j] = bosque[i][j];
+            }
+        }
+    }
+
+    // Actualizar bosque
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < M; ++j)
+            bosque[i][j] = nuevoBosque[i][j];
+}
+
 int main() {
     srand(time(0));
     int bosque[N][M];
 
-    // Inicializa todo el bosque con árboles vivos
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < M; ++j)
             bosque[i][j] = 0;
 
-    // Un árbol aleatorio empieza quemándose
     int f = rand() % N;
     int c = rand() % M;
     bosque[f][c] = 1;
 
-    cout << "Estado inicial del bosque:\n";
+    cout << "Estado inicial:\n";
     imprimirBosque(bosque);
 
-    // Aún no se propaga el fuego
+    propagarFuego(bosque);
+
+    cout << "Despues de una iteracion:\n";
+    imprimirBosque(bosque);
+
     return 0;
 }
