@@ -6,7 +6,6 @@ Matriz:                                               Matriz rotada 90 grados en
 9  1  2  3                                            6  2  7  3
 4  5  6  7                                            7  3  8  4  */
 
-
 #include <iostream>
 using namespace std;
 
@@ -36,8 +35,17 @@ int main() {
 
     rotar90(matriz, matrizR);
 
-    cout << "Rotación 90 grados realizada.\n";
-    // Aún no se imprime la matriz rotada
+    cout << "Matriz original:\t\tMatriz rotada 90 grados:\n";
+    for (int i = 0; i < 4; i++) {
+        // original
+        for (int j = 0; j < 4; j++)
+            cout << matriz[i][j] << " ";
+        cout << "\t\t";
+        // rotada
+        for (int j = 0; j < 4; j++)
+            cout << matrizR[i][j] << " ";
+        cout << endl;
+    }
 
     return 0;
 }
