@@ -23,7 +23,14 @@ int main() {
         DS += matriz[i][n - 1 - i];       // Diagonal secundaria
     }
 
-    cout << "Suma de la diagonal principal: " << DP << endl;
+    cout << "\nContenido de la matriz:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++)
+            cout << matriz[i][j] << " ";
+        cout << endl;
+    }
+
+    cout << "\nSuma de la diagonal principal: " << DP << endl;
     cout << "Suma de la diagonal secundaria: " << DS << endl;
 
     return 0;
