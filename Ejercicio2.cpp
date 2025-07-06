@@ -21,6 +21,17 @@ void mostrarMatriz(int matriz[][3], int fila, int columna) {
 	}
 }
 
+void buscarValor(int valor, int matriz[][3], int fila, int columna) {
+	cout << "El valor " << valor << " se encuentra en:\n";
+	for (int i = 0; i < fila; i++) {
+		for (int j = 0; j < columna; j++) {
+			if (matriz[i][j] == valor) {
+				cout << "Fila " << i << ", Columna " << j << endl;
+			}
+		}
+	}
+}
+
 int main() {
 	int matriz[3][3] = {
 		{1, 2, 3},
@@ -35,7 +46,7 @@ int main() {
 	cout << "Valor que desea buscar: ";
 	cin >> valor;
 
-	// Búsqueda aún no implementada
+	buscarValor(valor, matriz, 3, 3);
 
 	return 0;
 }
