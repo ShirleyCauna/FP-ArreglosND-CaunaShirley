@@ -10,6 +10,21 @@ Matriz:                                               Matriz rotada 90 grados en
 #include <iostream>
 using namespace std;
 
+void rotar90(int matriz[][4], int matrizR[][4]) {
+    // Transponer
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
+            matrizR[j][i] = matriz[i][j];
+
+    // Reflejar horizontalmente
+    for (int i = 0; i < 4; i++)
+        for (int j = 0; j < 2; j++) {
+            int aux = matrizR[i][j];
+            matrizR[i][j] = matrizR[i][3 - j];
+            matrizR[i][3 - j] = aux;
+        }
+}
+
 int main() {
     int matriz[4][4] = {
         {1, 2, 3, 4},
@@ -17,16 +32,12 @@ int main() {
         {9, 1, 2, 3},
         {4, 5, 6, 7}
     };
+    int matrizR[4][4];
 
-    cout << "Matriz original:\n";
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            cout << matriz[i][j] << " ";
-        }
-        cout << endl;
-    }
+    rotar90(matriz, matrizR);
 
-    // Aún no se aplica rotación
+    cout << "Rotación 90 grados realizada.\n";
+    // Aún no se imprime la matriz rotada
 
     return 0;
 }
