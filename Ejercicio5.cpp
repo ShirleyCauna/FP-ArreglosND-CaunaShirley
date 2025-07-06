@@ -27,8 +27,8 @@ void buscarMayorMinimo(int matriz[4][4]) {
         }
     }
 
-    cout << "El valor maximo es " << maximo << " y se encuentra en Fila " << maxFila << ", Columna " << maxCol << endl;
-    cout << "El valor minimo es " << minimo << " y se encuentra en Fila " << minFila << ", Columna " << minCol << endl;
+    cout << "\nEl valor maximo es " << maximo << " y se encuentra en: Fila " << maxFila << ", Columna " << maxCol << endl;
+    cout << "El valor minimo es " << minimo << " y se encuentra en: Fila " << minFila << ", Columna " << minCol << endl;
 }
 
 int main() {
@@ -38,6 +38,14 @@ int main() {
         {6, 10, 11, 12},
         {13, 14, 15, 16}
     };
+
+    cout << "Matriz:\n";
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
 
     buscarMayorMinimo(matriz);
 
