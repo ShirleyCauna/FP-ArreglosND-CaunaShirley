@@ -1,11 +1,11 @@
-/* 11. Simulación de Propagación de Fuego: Cree un programa que simule la propagación de un incendio
-en un bosque representado por una matriz de 10x10, donde los árboles pueden estar en diferentes
-estados: vivos (0), quemándose (1), quemados (2). El programa debe actualizar el estado del bosque
-en función de las siguientes reglas y mostrar el bosque en su estado inicial y después de la
-propagación del fuego:
-• Un árbol vivo (0) se convierte en quemándose (1) si al menos uno de sus vecinos está quemándose.
-• Un árbol quemándose (1) se convierte en quemado (2) en la siguiente iteración.
-• Un árbol quemado (2) permanece quemado.
+/* 11. Simulacion de Propagacion de Fuego: Cree un programa que simule la propagacion de un incendio
+en un bosque representado por una matriz de 10x10, donde los Arboles pueden estar en diferentes
+estados: vivos (0), quemandose (1), quemados (2). El programa debe actualizar el estado del bosque
+en funcion de las siguientes reglas y mostrar el bosque en su estado inicial y despues de la
+propagacion del fuego:
+. Un Arbol vivo (0) se convierte en quemandose (1) si al menos uno de sus vecinos esta quemandose.
+. Un Arbol quemandose (1) se convierte en quemado (2) en la siguiente iteracion.
+. Un Arbol quemado (2) permanece quemado.
    .
    .
    .
@@ -50,7 +50,6 @@ void propagarFuego(int bosque[N][M]) {
         }
     }
 
-    // Actualizar bosque
     for (int i = 0; i < N; ++i)
         for (int j = 0; j < M; ++j)
             bosque[i][j] = nuevoBosque[i][j];
@@ -68,13 +67,14 @@ int main() {
     int c = rand() % M;
     bosque[f][c] = 1;
 
-    cout << "Estado inicial:\n";
+    cout << "Estado inicial del bosque:\n";
     imprimirBosque(bosque);
 
-    propagarFuego(bosque);
-
-    cout << "Despues de una iteracion:\n";
-    imprimirBosque(bosque);
+    for (int iter = 0; iter < 10; ++iter) {
+        propagarFuego(bosque);
+        cout << "Iteracion " << iter + 1 << ":\n";
+        imprimirBosque(bosque);
+    }
 
     return 0;
 }
