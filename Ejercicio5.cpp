@@ -6,6 +6,31 @@ mínimo en una matriz de 4x4, indicando sus posiciones.
 #include <iostream>
 using namespace std;
 
+void buscarMayorMinimo(int matriz[4][4]) {
+    int maximo = matriz[0][0];
+    int minimo = matriz[0][0];
+    int maxFila = 0, maxCol = 0;
+    int minFila = 0, minCol = 0;
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (matriz[i][j] > maximo) {
+                maximo = matriz[i][j];
+                maxFila = i;
+                maxCol = j;
+            }
+            if (matriz[i][j] < minimo) {
+                minimo = matriz[i][j];
+                minFila = i;
+                minCol = j;
+            }
+        }
+    }
+
+    cout << "El valor maximo es " << maximo << " y se encuentra en Fila " << maxFila << ", Columna " << maxCol << endl;
+    cout << "El valor minimo es " << minimo << " y se encuentra en Fila " << minFila << ", Columna " << minCol << endl;
+}
+
 int main() {
     int matriz[4][4] = {
         {1, 5, 3, 4},
@@ -14,15 +39,7 @@ int main() {
         {13, 14, 15, 16}
     };
 
-    cout << "Matriz:\n";
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            cout << matriz[i][j] << " ";
-        }
-        cout << endl;
-    }
-
-    // Aún no se calcula máximo ni mínimo
+    buscarMayorMinimo(matriz);
 
     return 0;
 }
