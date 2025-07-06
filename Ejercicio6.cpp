@@ -22,7 +22,15 @@ int main() {
         {9, 8, 7, 6, 5, 4}
     };
 
-    // Reflejar cada fila horizontalmente
+    cout << "Matriz original:\n";
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // Reflejar horizontalmente
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 3; j++) {
             int aux = matriz[i][j];
@@ -31,7 +39,13 @@ int main() {
         }
     }
 
-    // Aún no se muestra el resultado
+    cout << "\nMatriz reflejada horizontalmente:\n";
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
 
     return 0;
 }
