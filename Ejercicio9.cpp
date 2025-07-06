@@ -10,33 +10,38 @@ latino de orden 4.
 #include <iostream>
 using namespace std;
 
+void CuadradoLatino(int N) {
+    int matriz[N][N];
+
+    // Primera fila
+    for (int j = 0; j < N; j++) {
+        matriz[0][j] = j + 1;
+    }
+
+    // Rotar hacia la derecha
+    for (int i = 1; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            matriz[i][j] = matriz[i - 1][(j + N - 1) % N];
+        }
+    }
+
+    cout << "Cuadrado latino de orden " << N << ":\n";
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
 int main() {
     int N;
+    cout << "Programa que imprime un cuadrado latino\n";
     cout << "Introduce el orden del cuadrado latino (N): ";
     cin >> N;
 
     if (N > 0) {
-        int matriz[N][N];
-
-        // Primera fila
-        for (int j = 0; j < N; j++) {
-            matriz[0][j] = j + 1;
-        }
-
-        // Rotar filas siguientes
-        for (int i = 1; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                matriz[i][j] = matriz[i - 1][(j + N - 1) % N];
-            }
-        }
-
-        cout << "Cuadrado latino:\n";
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                cout << matriz[i][j] << " ";
-            }
-            cout << endl;
-        }
+        CuadradoLatino(N);
     } else {
         cout << "Numero de orden invalido" << endl;
     }
