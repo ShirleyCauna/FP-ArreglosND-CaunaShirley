@@ -16,11 +16,27 @@ int main() {
     cin >> N;
 
     if (N > 0) {
-        cout << "Primera fila del cuadrado latino:\n";
+        int matriz[N][N];
+
+        // Primera fila
         for (int j = 0; j < N; j++) {
-            cout << j + 1 << " ";
+            matriz[0][j] = j + 1;
         }
-        cout << endl;
+
+        // Rotar filas siguientes
+        for (int i = 1; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                matriz[i][j] = matriz[i - 1][(j + N - 1) % N];
+            }
+        }
+
+        cout << "Cuadrado latino:\n";
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                cout << matriz[i][j] << " ";
+            }
+            cout << endl;
+        }
     } else {
         cout << "Numero de orden invalido" << endl;
     }
