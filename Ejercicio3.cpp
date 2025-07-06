@@ -16,6 +16,15 @@ int main() {
             cin >> matriz[i][j];
         }
 
-    // Aún no se suman las diagonales
+    int DP = 0, DS = 0;
+
+    for (int i = 0; i < n; i++) {
+        DP += matriz[i][i];               // Diagonal principal
+        DS += matriz[i][n - 1 - i];       // Diagonal secundaria
+    }
+
+    cout << "Suma de la diagonal principal: " << DP << endl;
+    cout << "Suma de la diagonal secundaria: " << DS << endl;
+
     return 0;
 }
