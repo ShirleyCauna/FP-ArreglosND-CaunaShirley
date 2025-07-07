@@ -60,10 +60,15 @@ void siguienteGeneracion(int actual[max][max], int siguiente[max][max]) {
     }
 }
 
-void imprimirTablero(const int tablero[max][max]) {
+void imprimirLadoALado(const int t1[max][max], const int t2[max][max]) {
+    cout << "Tablero Inicial\t\t\tSegunda Generacion\n\n";
     for (int i = 0; i < max; i++) {
         for (int j = 0; j < max; j++) {
-            cout << tablero[i][j] << " ";
+            cout << t1[i][j] << " ";
+        }
+        cout << "\t\t";
+        for (int j = 0; j < max; j++) {
+            cout << t2[i][j] << " ";
         }
         cout << endl;
     }
@@ -76,11 +81,7 @@ int main() {
     inicializar(actual);
     siguienteGeneracion(actual, siguiente);
 
-    cout << "Tablero Inicial:\n";
-    imprimirTablero(actual);
-
-    cout << "\nSegunda Generacion:\n";
-    imprimirTablero(siguiente);
+    imprimirLadoALado(actual, siguiente);
 
     return 0;
 }
