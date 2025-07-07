@@ -27,6 +27,39 @@ void inicializar(int tablero[max][max]) {
     }
 }
 
+int contarVecinos(int tablero[max][max], int x, int y) {
+    int cont = 0;
+    for (int i = -1; i <= 1; i++) {
+        for (int j = -1; j <= 1; j++) {
+            if (i == 0 && j == 0) continue;
+            int ni = x + i, nj = y + j;
+            if (ni >= 0 && ni < max && nj >= 0 && nj < max) {
+                cont += tablero[ni][nj];
+            }
+        }
+    }
+    return cont;
+}
+
+void siguienteGeneracion(int actual[max][max], int siguiente[max][max]) {
+    for (int i = 0; i < max; i++) {
+        for (int j = 0; j < max; j++) {
+            int vecinos = contarVecinos(actual, i, j);
+            if (actual[i][j] == 1) {
+                if (vecinos < 2 || vecinos > 3)
+                    siguiente[i][j] = 0;
+                else
+                    siguiente[i][j] = 1;
+            } else {
+                if (vecinos == 3)
+                    siguiente[i][j] = 1;
+                else
+                    siguiente[i][j] = 0;
+            }
+        }
+    }
+}
+
 void imprimirTablero(const int tablero[max][max]) {
     for (int i = 0; i < max; i++) {
         for (int j = 0; j < max; j++) {
@@ -38,11 +71,16 @@ void imprimirTablero(const int tablero[max][max]) {
 
 int main() {
     int actual[max][max];
+    int siguiente[max][max];
 
     inicializar(actual);
+    siguienteGeneracion(actual, siguiente);
 
     cout << "Tablero Inicial:\n";
     imprimirTablero(actual);
+
+    cout << "\nSegunda Generacion:\n";
+    imprimirTablero(siguiente);
 
     return 0;
 }
