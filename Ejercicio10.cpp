@@ -30,7 +30,7 @@ void contarMinasAdyacentes(int tablero[N][N], int tableroNumeros[N][N]) {
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++) {
             if (tablero[i][j] == 1) {
-                tableroNumeros[i][j] = 1; // Se mantiene mina como 1
+                tableroNumeros[i][j] = 1;
             } else {
                 int minas = 0;
                 for (int k = 0; k < 8; k++) {
@@ -44,10 +44,16 @@ void contarMinasAdyacentes(int tablero[N][N], int tableroNumeros[N][N]) {
         }
 }
 
-void mostrarTablero(int tablero[N][N]) {
+void mostrarTablerosLadoALado(int tablero1[N][N], int tablero2[N][N]) {
+    cout << "Tablero Original\t\tTablero con Conteo de Minas\n";
     for (int i = 0; i < N; i++) {
+        // Original
         for (int j = 0; j < N; j++)
-            cout << tablero[i][j] << " ";
+            cout << tablero1[i][j] << " ";
+        cout << "\t\t";
+        // Conteo
+        for (int j = 0; j < N; j++)
+            cout << tablero2[i][j] << " ";
         cout << endl;
     }
 }
@@ -57,9 +63,7 @@ int main() {
 
     inicializarTablero(tablero);
     contarMinasAdyacentes(tablero, tableroNumeros);
-
-    cout << "Tablero con números de minas adyacentes:\n";
-    mostrarTablero(tableroNumeros);
+    mostrarTablerosLadoALado(tablero, tableroNumeros);
 
     return 0;
 }
