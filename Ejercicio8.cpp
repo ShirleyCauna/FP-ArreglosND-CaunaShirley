@@ -26,15 +26,35 @@ int main() {
         {21, 22, 23, 24, 25}
     };
 
-    cout << "Matriz de orden 5:\n";
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            cout << matriz[i][j] << " ";
-        }
-        cout << endl;
-    }
+    int filaInicio = 0, filaFin = 4;
+    int columnaInicio = 0, columnaFin = 4;
 
-    // Aún no se recorre en espiral
+    cout << "Recorrido en espiral:\n";
+    while (filaInicio <= filaFin && columnaInicio <= columnaFin) {
+        // Fila superior
+        for (int j = columnaInicio; j <= columnaFin; j++)
+            cout << matriz[filaInicio][j] << " ";
+        filaInicio++;
+
+        // Columna derecha
+        for (int i = filaInicio; i <= filaFin; i++)
+            cout << matriz[i][columnaFin] << " ";
+        columnaFin--;
+
+        // Fila inferior
+        if (filaInicio <= filaFin) {
+            for (int j = columnaFin; j >= columnaInicio; j--)
+                cout << matriz[filaFin][j] << " ";
+            filaFin--;
+        }
+
+        // Columna izquierda
+        if (columnaInicio <= columnaFin) {
+            for (int i = filaFin; i >= filaInicio; i--)
+                cout << matriz[i][columnaInicio] << " ";
+            columnaInicio++;
+        }
+    }
 
     return 0;
 }
